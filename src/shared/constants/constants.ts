@@ -1,6 +1,5 @@
 import { createTheme } from '@mui/material'
-import MontserratWoff from '../../fonts/Montserrat-Regular__400.woff'
-import MontserratWoff2 from '../../fonts/Montserrat-Regular__400.woff2'
+import MontserratWoff2 from '../fonts/Montserrat-Regular__400.woff2'
 
 export const THEME = createTheme({
   typography: {
@@ -13,6 +12,15 @@ export const THEME = createTheme({
       md: 900,
       lg: 1140,
       xl: 1280,
+    },
+  },
+  palette: {
+    primary: {
+      main: '#292d33',
+    },
+    secondary: {
+      main: '#85afe0',
+      light: '#b6d0ed',
     },
   },
   components: {

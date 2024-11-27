@@ -1,7 +1,6 @@
 import React from 'react'
 
 export interface MainHeaderProps {
-  children: React.ReactNode
   classname?: string
 }
 
@@ -18,6 +17,7 @@ export interface FullWidthImageProps {
 
 export interface PageSectionProps {
   classname?: string
+  id?: string
   children: React.ReactNode
 }
 
@@ -26,9 +26,18 @@ export interface BackgroundTextContainerProps {
   children: React.ReactNode
   background?: string
   gradient?: string
+  theme?: 'dark' | 'light'
 }
 
 export interface ButtonPrimaryProps {
   content: string
   linkTo?: string
+  classname?: string
+}
+
+export interface ListIconComponentProps {
+  items: Array<Record<string, string>>
+  title?: string
+  classname?: string
+  icon?: React.ReactNode
 }

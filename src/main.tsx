@@ -1,9 +1,9 @@
 import { createRoot } from 'react-dom/client'
 import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
-import { ThemeProvider } from '@mui/material'
+import { StyledEngineProvider, ThemeProvider } from '@mui/material'
 import { THEME } from './shared/constants/constants'
-import './index.css'
+import './index.scss'
 
 const router = createRouter({ routeTree })
 
@@ -15,6 +15,8 @@ declare module '@tanstack/react-router' {
 
 createRoot(document.getElementById('root')!).render(
   <ThemeProvider theme={THEME}>
-    <RouterProvider router={router} />
+    <StyledEngineProvider injectFirst>
+      <RouterProvider router={router} />
+    </StyledEngineProvider>
   </ThemeProvider>
 )

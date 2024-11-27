@@ -1,11 +1,15 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import PageSection from '../widgets/PageSection/PageSection'
-import AbsoulteContainer from '../shared/ui/AbsoulteContainer'
-import { Box, Typography } from '@mui/material'
-import FullWidthImage from '../shared/ui/FullWidthImage'
-import heroImage from '../assets/1.jpg'
-import BackgroundTextContainer from '../shared/ui/BackgroundTextContainer'
-import ButtonPrimary from '../shared/ui/ButtonPrimary'
+import { Box } from '@mui/material'
+import HeroSection from '../widgets/HeroSection/HeroSerction'
+import ContactSection from '../widgets/ContactSection/ContactSection'
+import LabourRightsSection from '../widgets/LabourRightsSection/LabourRightsSection'
+import LegalWorkSection from '../widgets/LegalWorkSection/LegalWorkSection'
+import LegalAreas from '../widgets/LegalAreas/LegalAreas'
+import LegalServicesSection from '../widgets/LegalServicesSection/LegalServicesSection'
+import SecurityServicesSection from '../widgets/SecurityServicesSection/SecurityServicesSection'
+import ExclusiveServicesSection from '../widgets/ExclusiveServicesSection/ExclusiveServicesSection'
+import ServiceFormatsSection from '../widgets/ServiceFormatsSection/ServiceFormatsSection'
+import ContactForm from '../widgets/ContactForm/ContactForm'
 
 export const Route = createLazyFileRoute('/')({
   component: Index,
@@ -13,29 +17,17 @@ export const Route = createLazyFileRoute('/')({
 
 function Index() {
   return (
-    <Box className="page-content">
-      <PageSection classname="mt-8 bg-gradient-to-b from-secondary to-primary">
-        <AbsoulteContainer classname="-top-5 -left-10 w-[620px] ">
-          <BackgroundTextContainer gradient="to right, #292d33, #555c66">
-            <Typography variant="h3">Творчество на службе у наших клиентов</Typography>
-          </BackgroundTextContainer>
-        </AbsoulteContainer>
-
-        <FullWidthImage classname="max-h-[900px] pt-24" src={heroImage} />
-
-        <AbsoulteContainer classname="right-0 -bottom-56 w-[458px]">
-          <BackgroundTextContainer>
-            <p className="text-black text-xl leading-7">
-              Mi quis hendrerit dolor magna eget est lorem. In est ante in nibh mauris cursus mattis molestie a. Tortor
-              condimentum lacinia quis vel eros donec ac odio tempor. Vitae sapien pellentesque habitant morbi
-              tristique. Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Bibendum at varius vel
-              pharetra vel turpis.
-            </p>
-
-            <ButtonPrimary content="Более" />
-          </BackgroundTextContainer>
-        </AbsoulteContainer>
-      </PageSection>
+    <Box className="page-content flex flex-col gap-48">
+      <HeroSection />
+      <ContactSection />
+      <LabourRightsSection />
+      <LegalWorkSection />
+      <LegalAreas />
+      <LegalServicesSection />
+      <SecurityServicesSection />
+      <ExclusiveServicesSection />
+      <ServiceFormatsSection />
+      <ContactForm />
     </Box>
   )
 }
