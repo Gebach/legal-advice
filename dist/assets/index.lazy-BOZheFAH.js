@@ -1,0 +1,1 @@
+import{c as s,j as e,B as a,H as o,C as t,L as c,a as n,b as i,d as x,e as r,E as j,S,f as l}from"./index-D_R-XtsC.js";const u=s("/")({component:g});function g(){return e.jsxs(a,{className:"page-content flex flex-col gap-48",children:[e.jsx(o,{}),e.jsx(t,{}),e.jsx(c,{}),e.jsx(n,{}),e.jsx(i,{}),e.jsx(x,{}),e.jsx(r,{}),e.jsx(j,{}),e.jsx(S,{}),e.jsx(l,{})]})}export{u as Route};
