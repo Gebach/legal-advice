@@ -16,9 +16,16 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const LegalAdviceLazyImport = createFileRoute('/legal-advice')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const LegalAdviceLazyRoute = LegalAdviceLazyImport.update({
+  id: '/legal-advice',
+  path: '/legal-advice',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/legal-advice.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
@@ -37,6 +44,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/legal-advice': {
+      id: '/legal-advice'
+      path: '/legal-advice'
+      fullPath: '/legal-advice'
+      preLoaderRoute: typeof LegalAdviceLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -44,32 +58,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/legal-advice': typeof LegalAdviceLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/legal-advice': typeof LegalAdviceLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/legal-advice': typeof LegalAdviceLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/legal-advice'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/legal-advice'
+  id: '__root__' | '/' | '/legal-advice'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  LegalAdviceLazyRoute: typeof LegalAdviceLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  LegalAdviceLazyRoute: LegalAdviceLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -82,11 +101,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/legal-advice"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/legal-advice": {
+      "filePath": "legal-advice.lazy.tsx"
     }
   }
 }
