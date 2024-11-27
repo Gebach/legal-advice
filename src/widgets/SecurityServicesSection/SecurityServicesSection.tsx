@@ -7,7 +7,7 @@ import SecurityServicesImage from '../../shared/assets/SecurityServicesSection/s
 
 function LegalServicesSection() {
   return (
-    <PageSection id="legal-services">
+    <PageSection id="security-services">
       <Box className="flex justify-between items-center">
         <Box className="overflow-hidden max-w-fit flex-1 flex justify-center items-center">
           <FullWidthImage classname="w-[700px]" src={SecurityServicesImage} />

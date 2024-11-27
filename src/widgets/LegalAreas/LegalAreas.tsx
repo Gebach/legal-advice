@@ -24,7 +24,7 @@ function LegalAreas() {
               Юридические услуги
             </Typography>
 
-            <ButtonPrimary linkTo="/#legal-services" content="Подробнее" />
+            <ButtonPrimary linkTo="#legal-services" content="Подробнее" />
           </BackgroundTextContainer>
         </Box>
 
@@ -36,7 +36,7 @@ function LegalAreas() {
               Услуги по экономической и информационной безопасности бизнеса
             </Typography>
 
-            <ButtonPrimary linkTo="/#security-services" content="Подробнее" />
+            <ButtonPrimary linkTo="#security-services" content="Подробнее" />
           </BackgroundTextContainer>
         </Box>
 
@@ -48,7 +48,7 @@ function LegalAreas() {
               Эксклюзивные услуги
             </Typography>
 
-            <ButtonPrimary linkTo="/#exclusive-services" content="Подробнее" />
+            <ButtonPrimary linkTo="#exclusive-services" content="Подробнее" />
           </BackgroundTextContainer>
         </Box>
       </AbsoulteContainer>
