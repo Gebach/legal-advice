@@ -6,7 +6,7 @@ import DesignCircle from '../../shared/ui/DesignCircle/DesignCircle'
 
 function LegalWorkSection() {
   return (
-    <PageSection id="legal-work" classname="mt-32 flex flex-col justify-center items-end">
+    <PageSection id="legal-work" classname="md:mt-32 flex flex-col justify-center items-end">
       <Typography variant="h2" className="relative z-10 md:w-[700px] text-right max-md:text-2xl">
         Комплексное юридическое обслуживание
       </Typography>

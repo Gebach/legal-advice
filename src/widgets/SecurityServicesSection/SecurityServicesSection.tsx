@@ -13,7 +13,7 @@ function LegalServicesSection() {
           <FullWidthImage classname="lg:w-[700px] w-full lg:max-h-full max-lg:relative" src={SecurityServicesImage} />
         </Box>
         <ListIconComponent
-          classname="flex-1 pl-8"
+          classname="flex-1 md:pl-8"
           title="Услуги по экономической и информационной безопасности бизнеса"
           items={fakeSecurityServicesJson}
         />

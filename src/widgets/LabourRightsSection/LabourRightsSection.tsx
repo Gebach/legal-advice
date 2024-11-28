@@ -9,7 +9,7 @@ import LabourImage from '../../shared//assets/2.jpg'
 function LabourRightsSection() {
   return (
     <PageSection id="labour-rights" classname="mt-8 bg-gradient-to-b from-secondary to-primary">
-      <Box className="md:w-full w-[285px] flex justify-center items-start md:ml-16 m-auto md:h-[720px] overflow-hidden relative bottom-32">
+      <Box className="md:w-full w-[285px] flex justify-center items-start md:ml-16 m-auto md:h-[720px] overflow-hidden relative md:bottom-32 bottom-8">
         <FullWidthImage classname="md:pb-32 max-md:w-full" src={LabourImage} />
       </Box>
 

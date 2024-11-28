@@ -68,7 +68,7 @@ function ContactForm() {
               fullWidth
               value={formValues.email}
               onChange={e => onChangeHandler(e)}
-              helperText={errors.email && 'Некорректный email'}
+              helperText={errors.email && 'Некорректная почта'}
               error={errors.email}
             />
             <TextField

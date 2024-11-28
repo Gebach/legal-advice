@@ -9,13 +9,13 @@ import LegalAreasImage from '../../shared/assets/3.jpg'
 
 function LegalAreas() {
   return (
-    <PageSection id="legal-areas" classname="mt-12 flex flex-col items-end">
+    <PageSection id="legal-areas" classname="mt-12 flex flex-col md:items-end items-center">
       <div className="bg-gradient-to-b absolute from-secondary to-primary max-w-[80%] w-full h-[720px] -left-2/4 -top-32"></div>
       <Box className="flex justify-center items-start xl:w-[900px] md:w-full w-11/12 md:h-[720px] overflow-hidden relative">
         <FullWidthImage classname="max-md:w-full" src={LegalAreasImage} />
       </Box>
 
-      <AbsoulteContainer classname="grid grid-cols-1 xl:absolute md:gap-8 gap-4 xl:-top-28 xl:-right-32 relative md:-top-32 right-0 top-4 justify-center items-end text-center xl:max-w-[450px] max-w-prose w-full">
+      <AbsoulteContainer classname="grid grid-cols-1 xl:absolute md:gap-8 gap-4 xl:-top-28 xl:-right-32 md:-top-32 right-0 top-4 relative  justify-center items-end text-center xl:max-w-[450px] md:max-w-prose max-w-[350px] w-full">
         <Box>
           <BackgroundTextContainer classname="md:py-12 py-4">
             <BalanceOutlined sx={{ fontSize: 48, color: 'secondary.light' }} />

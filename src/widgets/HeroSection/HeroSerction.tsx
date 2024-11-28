@@ -33,7 +33,7 @@ function HeroSection() {
         </BackgroundTextContainer>
       </AbsoulteContainer>
 
-      <AbsoulteContainer classname="md:-left-8 md:-bottom-32 left-0 -bottom-52 max-md:absolute">
+      <AbsoulteContainer classname="md:-left-8 md:-bottom-32 left-0 -bottom-44 max-md:absolute">
         <DesignCircle />
       </AbsoulteContainer>
     </PageSection>

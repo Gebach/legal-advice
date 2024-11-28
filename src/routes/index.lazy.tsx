@@ -17,7 +17,7 @@ export const Route = createLazyFileRoute('/')({
 
 function Index() {
   return (
-    <Box className="page-content flex flex-col gap-48">
+    <Box className="page-content flex flex-col md:gap-48 gap-32">
       <HeroSection />
       <ContactSection />
       <LabourRightsSection />

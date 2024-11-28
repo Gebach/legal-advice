@@ -18,7 +18,7 @@ function ContactSection() {
 
       <ButtonPrimary content="Посмотреть больше" />
 
-      <AbsoulteContainer classname="inset-y-0 right-0 top-[30%] max-md:absolute max-md:opacity-70">
+      <AbsoulteContainer classname="inset-y-0 right-0 top-[30%] max-md:absolute">
         <DesignCircle classname="-z-10" />
       </AbsoulteContainer>
     </PageSection>
