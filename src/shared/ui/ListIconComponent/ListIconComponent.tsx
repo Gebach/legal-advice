@@ -25,7 +25,7 @@ function ListIconComponent({
                   {i.title}
                 </Typography>
               )}
-              <ListItemText primary={i.content} className="m-0" />
+              <ListItemText primary={i.content} className="m-0" sx={{ '@media (max-width 768px)': { fontSize: 14 } }} />
             </Box>
           </ListItem>
         ))}
