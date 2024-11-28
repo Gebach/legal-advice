@@ -2,11 +2,34 @@ import { Box, Divider, FormControl, TextField, Typography, Stack } from '@mui/ma
 import styles from './style.module.scss'
 import ButtonPrimary from '../../shared/ui/ButtonPrimary/ButtonPrimary'
 import PageSection from '../../shared/ui/PageSection/PageSection'
+import { useEffect, useState } from 'react'
+import validateField from '../../features/validate-field'
 
 function ContactForm() {
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+  const [errors, setError] = useState({
+    name: false,
+    email: false,
+  })
+  const [isFormInvalid, setIsFormInvalid] = useState(true)
+
+  useEffect(() => {
+    if (Object.values(formValues).some(value => value.trim() !== ''))
+      setIsFormInvalid(Object.values(errors).some(e => e))
+  }, [errors])
+
+  function onChangeHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    setError({ ...errors, [e.target.name]: validateField(e.target.value, e.target.name) })
+  }
+
   return (
     <PageSection id="contact-form" classname="mb-32">
-      <Box className="flex gap-0">
+      <Box className="flex gap-0 max-md:flex-col">
         <Box
           component="form"
           className="bg-gradient-to-b from-secondary to-primary p-10 flex-1"
@@ -28,6 +51,10 @@ function ContactForm() {
               sx={{ input: { color: '#fff' } }}
               className={styles.input}
               fullWidth
+              value={formValues.name}
+              onChange={e => onChangeHandler(e)}
+              helperText={errors.name && 'Имя должно содержать больше 2 символов без цифр'}
+              error={errors.name}
             />
             <TextField
               label="Почта"
@@ -39,6 +66,10 @@ function ContactForm() {
               sx={{ input: { color: '#fff' } }}
               className={styles.input}
               fullWidth
+              value={formValues.email}
+              onChange={e => onChangeHandler(e)}
+              helperText={errors.email && 'Некорректная почта'}
+              error={errors.email}
             />
             <TextField
               rows={5}
@@ -50,9 +81,11 @@ function ContactForm() {
               placeholder="Введите свое сообщение здесь"
               variant="standard"
               fullWidth
+              value={formValues.message}
+              onChange={e => setFormValues({ ...formValues, message: e.target.value })}
             />
 
-            <ButtonPrimary content="Предоставить на рассмотрение" />
+            <ButtonPrimary disabled={isFormInvalid} type="submit" content="Предоставить на рассмотрение" />
           </FormControl>
         </Box>
         <Box className="form-add bg-white p-10 text-black">
@@ -78,7 +111,7 @@ function ContactForm() {
                 Часы работы
               </Typography>
               <p className="italic leading-6 text-lg">
-                Понедельник-Пятница: 10:00 - 20:00 <br /> суббота-воскресенье: выходной{' '}
+                Понедельник-Пятница: 10:00 - 20:00 <br /> Суббота-Воскресенье: выходной
               </p>
             </Box>
           </Stack>

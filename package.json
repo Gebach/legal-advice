@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://username.github.io/legal-advice/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -18,8 +17,10 @@
     "@mui/material": "^6.1.8",
     "@tanstack/react-router": "^1.82.12",
     "@tanstack/router-devtools": "^1.82.12",
+    "axios": "^1.7.8",
     "mobx": "^6.13.5",
     "mobx-react-lite": "^4.0.7",
+    "nodemailer": "^6.9.16",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.81.0",

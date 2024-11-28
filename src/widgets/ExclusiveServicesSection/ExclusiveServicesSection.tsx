@@ -8,9 +8,12 @@ import ExclusiveServicesImage from '../../shared/assets/ExclusiveServicesSection
 function ExclusiveServicesSection() {
   return (
     <PageSection id="exclusive-services">
-      <Box className="flex justify-between items-center gap-10">
+      <Box className="flex lg:flex-row flex-col justify-between items-center gap-10">
         <ListIconComponent classname="flex-1" title="Эксклюзивные услуги" items={fakeExclusiveServicesJson} />
-        <FullWidthImage classname="w-full flex-1" src={ExclusiveServicesImage} />
+        <Box className="flex-1 max-lg:max-h-[450px] max-lg:w-full max-lg:overflow-hidden">
+          <FullWidthImage classname="w-full lg:max-h-full max-lg:relative " src={ExclusiveServicesImage} />
+        </Box>
+        {/* <FullWidthImage classname="w-full flex-1" src={ExclusiveServicesImage} /> */}
       </Box>
     </PageSection>
   )

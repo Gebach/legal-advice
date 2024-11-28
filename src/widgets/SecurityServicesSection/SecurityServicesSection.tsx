@@ -8,12 +8,12 @@ import SecurityServicesImage from '../../shared/assets/SecurityServicesSection/s
 function LegalServicesSection() {
   return (
     <PageSection id="security-services">
-      <Box className="flex justify-between items-center">
-        <Box className="overflow-hidden max-w-fit flex-1 flex justify-center items-center">
-          <FullWidthImage classname="w-[700px]" src={SecurityServicesImage} />
+      <Box className="flex lg:flex-row flex-col-reverse justify-between items-center">
+        <Box className="overflow-hidden max-lg:max-h-[450px] max-w-fit flex-1 flex justify-center items-center">
+          <FullWidthImage classname="lg:w-[700px] w-full lg:max-h-full max-lg:relative" src={SecurityServicesImage} />
         </Box>
         <ListIconComponent
-          classname="flex-1 pl-8"
+          classname="flex-1 md:pl-8"
           title="Услуги по экономической и информационной безопасности бизнеса"
           items={fakeSecurityServicesJson}
         />

@@ -8,7 +8,7 @@ function ServiceFormatsSection() {
   return (
     <PageSection id="service-formats">
       <Box className="flex flex-col justify-center items-center max-w-3xl mx-auto">
-        <Typography variant="h3" className="center mb-6">
+        <Typography variant="h3" className="center mb-6 max-md:text-2xl max-md:font-bold">
           Форматы обслуживания
         </Typography>
         <ListIconComponent

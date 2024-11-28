@@ -12,12 +12,12 @@ import ServiceFormatsSection from '../widgets/ServiceFormatsSection/ServiceForma
 import ContactForm from '../widgets/ContactForm/ContactForm'
 
 export const Route = createLazyFileRoute('/legal-advice')({
-  component: LegalAdvice,
+  component: RouteComponent,
 })
 
-function LegalAdvice() {
+function RouteComponent() {
   return (
-    <Box className="page-content flex flex-col gap-48">
+    <Box className="page-content flex flex-col md:gap-48 gap-32">
       <HeroSection />
       <ContactSection />
       <LabourRightsSection />

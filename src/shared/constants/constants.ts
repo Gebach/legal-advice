@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material'
+import { alpha, createTheme } from '@mui/material'
 import MontserratWoff2 from '../fonts/Montserrat-Regular__400.woff2'
 
 export const THEME = createTheme({
@@ -36,5 +36,39 @@ export const THEME = createTheme({
         }
       `,
     },
+
+    MuiInput: {
+      styleOverrides: {
+        underline: {
+          '&:before': {
+            borderBottomColor: 'white', // Цвет нижней границы
+          },
+          '&:hover:not(.Mui-disabled):before': {
+            borderBottomColor: 'white', // Цвет нижней границы при наведении
+          },
+          '&:after': {
+            borderBottomColor: 'white', // Цвет нижней границы при фокусе
+          },
+        },
+        input: {
+          color: 'white', // Цвет вводимого текста
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: 'white', // Цвет текста лейбла
+          '&.Mui-focused': {
+            color: alpha('#fff', 0.8), // Цвет текста лейбла при фокусе
+          },
+        },
+      },
+    },
   },
 })
+
+export const REGEX: Record<string, RegExp> = {
+  email: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+  name: /^[a-zA-Zа-яА-ЯёЁ\s]{2,}$/,
+}

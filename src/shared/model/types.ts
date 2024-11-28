@@ -33,6 +33,8 @@ export interface ButtonPrimaryProps {
   content: string
   linkTo?: string
   classname?: string
+  type?: 'submit' | 'reset' | 'button' | undefined
+  disabled?: boolean
 }
 
 export interface ListIconComponentProps {
