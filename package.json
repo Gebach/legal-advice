@@ -17,6 +17,7 @@
     "@mui/material": "^6.1.8",
     "@tanstack/react-router": "^1.82.12",
     "@tanstack/router-devtools": "^1.82.12",
+    "@types/nodemailer": "^6.4.17",
     "axios": "^1.7.8",
     "mobx": "^6.13.5",
     "mobx-react-lite": "^4.0.7",

@@ -11,12 +11,12 @@ function LegalWorkSection() {
         Комплексное юридическое обслуживание
       </Typography>
       <p className="text-2xl leading-8 mt-8 relative z-10 text-right max-md:text-xl">
-        Tristique risus nec feugiat in fermentum posuere urna nec tincidunt. Dignissim enim sit amet venenatis urna
-        cursus eget nunc. Sit amet cursus sit amet dictum sit amet. Dolor sit amet consectetur adipiscing elit
-        pellentesque habitant morbi tristique. Risus nullam eget felis eget nunc lobortis mattis aliquam.
+        Мы предоставляем полный спектр юридических услуг для вашего бизнеса или личных потребностей. Комплексное
+        сопровождение включает правовую экспертизу, составление договоров, защиту интересов в суде и консультации по
+        текущим вопросам. Мы обеспечиваем надёжную правовую основу для вашего спокойствия и уверенности в будущем.
       </p>
 
-      <ButtonPrimary content="Посмотреть больше" />
+      <ButtonPrimary linkTo="#legal-services" content="Посмотреть больше" />
 
       <AbsoulteContainer classname="inset-y-0 left-0 top-[20%] max-md:absolute max-md:opacity-70">
         <DesignCircle classname="-z-10" />

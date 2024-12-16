@@ -6,8 +6,8 @@ import MainHeader from '../widgets/MainHeader/MainHeader'
 export const Route = createRootRoute({
   component: () => (
     <Box className="bg-primary min-h-screen">
+      <MainHeader classname="main-header"></MainHeader>
       <Container>
-        <MainHeader classname="site-header kkk"></MainHeader>
         <Outlet />
         <TanStackRouterDevtools />
       </Container>

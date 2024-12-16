@@ -19,13 +19,13 @@ function LabourRightsSection() {
             Трудовое право
           </Typography>
           <p className="text-black text-2xl leading-9 max-md:text-xl">
-            Mi quis hendrerit dolor magna eget est lorem. In est ante in nibh mauris cursus mattis molestie a. Tortor
-            condimentum lacinia quis vel eros donec ac odio tempor. Vitae sapien pellentesque habitant morbi tristique.
-            Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Bibendum at varius vel pharetra vel
-            turpis.
+            Мы помогаем работодателям и сотрудникам находить баланс и справедливые решения в рамках трудового
+            законодательства. Наши услуги включают разработку трудовых договоров, защиту прав при увольнении,
+            урегулирование трудовых споров и другие вопросы. Мы гарантируем поддержку на всех этапах взаимодействия с
+            трудовым правом.
           </p>
 
-          <ButtonPrimary content="Более" />
+          <ButtonPrimary linkTo="#legal-areas" content="Подробнее" />
         </BackgroundTextContainer>
       </AbsoulteContainer>
     </PageSection>

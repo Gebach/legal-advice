@@ -35,6 +35,18 @@ export interface ButtonPrimaryProps {
   classname?: string
   type?: 'submit' | 'reset' | 'button' | undefined
   disabled?: boolean
+  onClick?: (e?: any) => void
+}
+
+export interface ButtonLinkProps {
+  content: string
+  linkTo: string
+  classname?: string
+  type?: 'submit' | 'reset' | 'button' | undefined
+  disabled?: boolean
+  onClick?: (e?: any) => void
+  scrolled?: boolean
+  color?: string
 }
 
 export interface ListIconComponentProps {

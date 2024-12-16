@@ -23,13 +23,13 @@ function HeroSection() {
       <AbsoulteContainer classname="md:right-0 md:-bottom-56 md:w-[458px]">
         <BackgroundTextContainer>
           <p className="text-black text-2xl leading-8 max-md:text-xl">
-            Mi quis hendrerit dolor magna eget est lorem. In est ante in nibh mauris cursus mattis molestie a. Tortor
-            condimentum lacinia quis vel eros donec ac odio tempor. Vitae sapien pellentesque habitant morbi tristique.
-            Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Bibendum at varius vel pharetra vel
-            turpis.
+            Мы объединяем профессионализм, опыт и нестандартный подход к решению юридических задач. Наша команда
+            стремится обеспечить максимальный результат для клиентов, используя инновационные методы и глубокие знания
+            законодательства. Мы уверены, что каждая ситуация требует индивидуального подхода, поэтому наши решения
+            всегда нацелены на успех и защиту ваших интересов.
           </p>
 
-          <ButtonPrimary content="Более" />
+          <ButtonPrimary linkTo="#legal-areas" content="Более" />
         </BackgroundTextContainer>
       </AbsoulteContainer>
 

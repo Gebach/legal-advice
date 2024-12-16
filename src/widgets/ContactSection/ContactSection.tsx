@@ -11,12 +11,12 @@ function ContactSection() {
         Свяжитесь с юристом нашей фирмы
       </Typography>
       <p className="text-2xl leading-8 mt-8 relative z-10 max-md:text-xl">
-        Mi quis hendrerit dolor magna eget est lorem. In est ante in nibh mauris cursus mattis molestie a. Tortor
-        condimentum lacinia quis vel eros donec ac odio tempor. Vitae sapien pellentesque habitant morbi tristique.
-        Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Bibendum at varius vel pharetra vel turpis.
+        Нужна квалифицированная помощь? Наши юристы готовы проконсультировать вас по любым правовым вопросам. Мы
+        обеспечим оперативный разбор вашей ситуации и предложим наилучшие пути её решения. Запишитесь на консультацию
+        сегодня и сделайте шаг к защите ваших прав и интересов.
       </p>
 
-      <ButtonPrimary content="Посмотреть больше" />
+      <ButtonPrimary linkTo="#contact-form" content="Связаться" />
 
       <AbsoulteContainer classname="inset-y-0 right-0 top-[30%] max-md:absolute">
         <DesignCircle classname="-z-10" />

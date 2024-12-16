@@ -22,6 +22,9 @@ export const THEME = createTheme({
       main: '#85afe0',
       light: '#b6d0ed',
     },
+    success: {
+      main: '#19e324',
+    },
   },
   components: {
     MuiCssBaseline: {
@@ -62,6 +65,13 @@ export const THEME = createTheme({
           '&.Mui-focused': {
             color: alpha('#fff', 0.8), // Цвет текста лейбла при фокусе
           },
+        },
+      },
+    },
+    MuiList: {
+      styleOverrides: {
+        root: {
+          padding: 0,
         },
       },
     },

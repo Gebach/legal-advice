@@ -11,6 +11,8 @@ export default {
       },
       black: '#000',
       white: '#fff',
+      gray: '#999',
+      transparent: 'transparent',
     },
   },
   plugins: [],
