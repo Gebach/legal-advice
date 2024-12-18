@@ -12,17 +12,27 @@ function ContactForm() {
     email: '',
     message: '',
   })
-  const [errors, setError] = useState({
+  const [errors, setErrors] = useState({
     name: false,
     email: false,
   })
   const [isFormInvalid, setIsFormInvalid] = useState(true)
-  const [isEmailSent, setIsEmailSent] = useState(false)
+  const [isEmailSentStatus, setIsEmailSentStatus] = useState<Record<string, boolean | string>>({
+    isSent: false,
+    status: false,
+    message: '',
+  })
   const [isEmailPending, setIsEmailPending] = useState(false)
 
   useEffect(() => {
-    if (Object.values(formValues).some(value => value.trim() !== ''))
-      setIsFormInvalid(Object.values(errors).some(e => e))
+    console.log(Object.values(errors))
+    if (
+      Object.values(errors).every(e => e === false) &&
+      Object.entries(formValues)
+        .filter(([key]) => key !== 'message') // Исключаем поле "message"
+        .every(([_, value]) => value.trim() !== '')
+    )
+      setIsFormInvalid(false)
     else {
       setIsFormInvalid(true)
     }
@@ -30,7 +40,10 @@ function ContactForm() {
 
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
-    setError({ ...errors, [e.target.name]: validateField(e.target.value, e.target.name) })
+    setErrors({
+      ...errors,
+      [e.target.name]: validateField(e.target.value, e.target.name),
+    })
   }
 
   async function sendFormHandler(e: React.FormEvent<HTMLFormElement>) {
@@ -47,23 +60,35 @@ function ContactForm() {
       })
 
       if (response.ok) {
-        setIsEmailPending(false)
         setFormValues({
           name: '',
           email: '',
           message: '',
         })
-        setError({
+        setErrors({
           name: false,
           email: false,
         })
         setIsFormInvalid(true)
-        setIsEmailSent(true)
+        setIsEmailSentStatus({
+          isSent: true,
+          status: true,
+          message: `Заявка успешно отправлена! <br />
+                    Наш менеджер свяжется с Вами в ближайшее время.`,
+        })
       } else {
         console.error('Failed to send email')
       }
     } catch (error) {
       console.error('Error sending email:', error)
+      setIsEmailSentStatus({
+        isSent: true,
+        status: false,
+        message: `Произошла непредвиденная ошибка <br />
+                  Повторите попытку позже.`,
+      })
+    } finally {
+      setIsEmailPending(false)
     }
   }
 
@@ -78,11 +103,12 @@ function ContactForm() {
         >
           {isEmailPending ? (
             <LoadingComponent />
-          ) : isEmailSent ? (
-            <Typography color="success" variant="h6">
-              Заявка успешно отправлена! <br />
-              Наш менеджер свяжется с Вами в ближайшее время.
-            </Typography>
+          ) : isEmailSentStatus.isSent ? (
+            <Typography
+              color={isEmailSentStatus.status ? 'success' : 'error'}
+              variant="h6"
+              dangerouslySetInnerHTML={{ __html: isEmailSentStatus.message }}
+            ></Typography>
           ) : (
             <FormControl className="w-11/12">
               <Typography variant="h4" className="text-white font-semibold">
@@ -144,25 +170,27 @@ function ContactForm() {
               <Typography variant="h6" className="font-semibold uppercase mb-4">
                 Адрес
               </Typography>
-              <p className="italic leading-6 text-lg">
-                121 Rock Sreet, 21 Avenue, <br /> Нью-Йорк, NY 92103-9000{' '}
-              </p>
+              <a
+                href="https://yandex.ru/maps/-/CHELJB4f"
+                target="_blank"
+                className="italic leading-6 text-lg underline"
+              >
+                г. Южно-Сахалинск, ул. Карла Маркса, 16, 106 офис
+              </a>
             </Box>
             <Box>
               <Typography variant="h6" className="font-semibold uppercase mb-4">
                 Позвоните нам
               </Typography>
-              <p className="italic leading-6 text-lg">
-                1 (234) 567-891 <br /> 1 (234) 987-654{' '}
-              </p>
+              <a href="tel:79140843300" className="italic leading-6 text-lg underline">
+                +7-914-084-33-00
+              </a>
             </Box>
             <Box>
               <Typography variant="h6" className="font-semibold uppercase mb-4">
                 Часы работы
               </Typography>
-              <p className="italic leading-6 text-lg">
-                Понедельник-Пятница: 10:00 - 20:00 <br /> Суббота-Воскресенье: выходной
-              </p>
+              <p className="italic leading-6 text-lg">Ежедневно с 09:00 до 20:00</p>
             </Box>
           </Stack>
         </Box>

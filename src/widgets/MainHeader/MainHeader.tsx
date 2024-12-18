@@ -1,8 +1,8 @@
 import { MainHeaderProps } from '../../shared/model/types'
-import logo from '../../shared/assets/react.svg'
 import { useEffect, useState } from 'react'
 import ButtonLink from '../../shared/ui/ButtonLink/ButtonLink'
 import BurgerMenu from '../../shared/ui/BurgerMenu/BurgerMenu'
+import logo from '../../shared/assets/logo.png'
 
 interface navLinksProps {
   content: string
@@ -89,13 +89,19 @@ function MainHeader({ classname }: MainHeaderProps) {
 
   return (
     <header
-      className={`fixed transition-all z-50 w-screen py-5 ${isScrolled ? 'bg-secondary shadow-xl' : ''} ${classname ?? ''}`}
+      className={`fixed transition-all z-50 w-screen py-3 ${isScrolled ? 'bg-white shadow-xl' : ''} ${classname ?? ''}`}
     >
       <div className={`flex justify-between items-center gap-16 transition-all max-w-[1120px] w-full m-auto`}>
-        <img className="max-lg:ml-4" src={logo} alt="" />
+        <img className="max-w-16 max-lg:ml-4 rounded-full" src={logo} alt="" />
         <nav className="flex justify-between items-center gap-8 max-lg:hidden">
           {navLinks.map(l => (
-            <ButtonLink key={l.link} content={l.content} linkTo={l.link} scrolled={`#${activeSection}` === l.link} />
+            <ButtonLink
+              color={isScrolled ? 'black' : 'white'}
+              key={l.link}
+              content={l.content}
+              linkTo={l.link}
+              scrolled={`#${activeSection}` === l.link}
+            />
           ))}
         </nav>
         <BurgerMenu color="#fff" className="lg:hidden" />

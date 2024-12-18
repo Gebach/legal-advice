@@ -5,7 +5,7 @@ import PageSection from '../../shared/ui/PageSection/PageSection'
 import FullWidthImage from '../../shared/ui/FullWidthImage/FullWidthImage'
 import ButtonPrimary from '../../shared/ui/ButtonPrimary/ButtonPrimary'
 import DesignCircle from '../../shared/ui/DesignCircle/DesignCircle'
-import heroImage from '../../shared/assets/1.jpg'
+import heroImage from '../../shared/assets/1_1.jpg'
 
 function HeroSection() {
   return (
@@ -18,7 +18,7 @@ function HeroSection() {
         </BackgroundTextContainer>
       </AbsoulteContainer>
 
-      <FullWidthImage classname="md:max-h-[900px] max-md:w-full md:pt-24" src={heroImage} />
+      <FullWidthImage classname="max-w-screen-lg w-full md:max-h-[900px] max-md:w-full md:pt-24" src={heroImage} />
 
       <AbsoulteContainer classname="md:right-0 md:-bottom-56 md:w-[458px]">
         <BackgroundTextContainer>

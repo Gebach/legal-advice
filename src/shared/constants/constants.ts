@@ -25,6 +25,9 @@ export const THEME = createTheme({
     success: {
       main: '#19e324',
     },
+    error: {
+      main: '#ff5614',
+    },
   },
   components: {
     MuiCssBaseline: {

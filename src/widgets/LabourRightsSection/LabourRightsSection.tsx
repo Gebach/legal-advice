@@ -4,7 +4,7 @@ import BackgroundTextContainer from '../../shared/ui/BackgroundTextContainer/Bac
 import ButtonPrimary from '../../shared/ui/ButtonPrimary/ButtonPrimary'
 import FullWidthImage from '../../shared/ui/FullWidthImage/FullWidthImage'
 import PageSection from '../../shared/ui/PageSection/PageSection'
-import LabourImage from '../../shared//assets/2.jpg'
+import LabourImage from '../../shared//assets/2_2.jpg'
 
 function LabourRightsSection() {
   return (

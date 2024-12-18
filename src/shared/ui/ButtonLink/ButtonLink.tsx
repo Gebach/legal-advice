@@ -29,13 +29,13 @@ function ButtonLink({
     <Button
       type={type}
       variant="text"
-      className={`button-link group/button-link transition-all hover:bg-opacity-0 ${scrolled ? 'bg-secondary-light' : 'bg-transparent'} ${classname ?? ''}`}
+      className={`button-link group/button-link transition-all hover:bg-opacity-0  ${scrolled ? 'bg-secondary-light' : 'bg-transparent'} ${classname ?? ''}`}
       onClick={onClickHandler}
       disabled={disabled}
       href={isLinkOutTo ? linkTo : ''}
       sx={{ justifyContent: 'flex-start' }}
     >
-      <span className={`text-${color} transition-colors group-hover/button-link:text-black`}>{content}</span>
+      <span className={`text-${color} transition-colors group-hover/button-link:text-secondary`}>{content}</span>
     </Button>
   )
 }
