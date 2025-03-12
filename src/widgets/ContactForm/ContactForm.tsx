@@ -1,10 +1,11 @@
-import { Box, Divider, FormControl, TextField, Typography, Stack } from '@mui/material'
+import { Box, Divider, FormControl, TextField, Typography, Stack, Checkbox, FormControlLabel } from '@mui/material'
 import styles from './style.module.scss'
 import ButtonPrimary from '../../shared/ui/ButtonPrimary/ButtonPrimary'
 import PageSection from '../../shared/ui/PageSection/PageSection'
 import { useEffect, useState } from 'react'
 import validateField from '../../features/validate-field'
 import LoadingComponent from '../../shared/ui/LoadingComponent/LoadingComponent'
+import { Link } from '@tanstack/react-router'
 
 function ContactForm() {
   const [formValues, setFormValues] = useState<Record<string, string>>({
@@ -15,6 +16,7 @@ function ContactForm() {
   const [errors, setErrors] = useState({
     name: false,
     email: false,
+    privacyAccess: false,
   })
   const [isFormInvalid, setIsFormInvalid] = useState(true)
   const [isEmailSentStatus, setIsEmailSentStatus] = useState<Record<string, boolean | string>>({
@@ -25,7 +27,6 @@ function ContactForm() {
   const [isEmailPending, setIsEmailPending] = useState(false)
 
   useEffect(() => {
-    console.log(Object.values(errors))
     if (
       Object.values(errors).every(e => e === false) &&
       Object.entries(formValues)
@@ -39,11 +40,20 @@ function ContactForm() {
   }, [errors])
 
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    const { name, type } = e.target
+    const value = type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value
+
+    if (type !== 'checkbox') {
+      setFormValues({ ...formValues, [name]: String(value) })
+    }
+
     setErrors({
       ...errors,
-      [e.target.name]: validateField(e.target.value, e.target.name),
+      [name]: validateField(value, name),
     })
+
+    console.log(value, name)
+    console.log(errors)
   }
 
   async function sendFormHandler(e: React.FormEvent<HTMLFormElement>) {
@@ -51,7 +61,7 @@ function ContactForm() {
     setIsEmailPending(true)
 
     try {
-      const response = await fetch('http://localhost:3000/send-mail', {
+      const response = await fetch('https://tvoepravo.online/api/send-mail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,6 +78,7 @@ function ContactForm() {
         setErrors({
           name: false,
           email: false,
+          privacyAccess: false,
         })
         setIsFormInvalid(true)
         setIsEmailSentStatus({
@@ -158,6 +169,32 @@ function ContactForm() {
                 fullWidth
                 value={formValues.message}
                 onChange={e => setFormValues({ ...formValues, message: e.target.value })}
+              />
+
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    sx={{
+                      color: 'secondary.main',
+                      '&.Mui-checked': {
+                        color: 'secondary.light',
+                      },
+                    }}
+                    value="privacyAgreement"
+                    id="privacyAgreement"
+                    name="privacyAgreement"
+                    defaultChecked
+                    onChange={e => onChangeHandler(e)}
+                  />
+                }
+                label={
+                  <Typography>
+                    Я согласен на{' '}
+                    <Link className="transition-all underline hover:opacity-80" to="/agreement">
+                      обработку персональных данных
+                    </Link>
+                  </Typography>
+                }
               />
 
               <ButtonPrimary disabled={isFormInvalid} type="submit" content="Предоставить на рассмотрение" />

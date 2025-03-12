@@ -84,4 +84,5 @@ export const THEME = createTheme({
 export const REGEX: Record<string, RegExp> = {
   email: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
   name: /^[a-zA-Zа-яА-ЯёЁ\s]{2,}$/,
+  privacyAgreement: /^true$/,
 }
