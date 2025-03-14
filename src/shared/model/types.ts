@@ -47,6 +47,7 @@ export interface ButtonLinkProps {
   onClick?: (e?: any) => void
   scrolled?: boolean
   color?: string
+  dataLink?: string
 }
 
 export interface ListIconComponentProps {

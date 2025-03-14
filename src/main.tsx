@@ -1,9 +1,10 @@
 import { createRoot } from 'react-dom/client'
-import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { createRouter, RouterProvider, useLocation } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import { StyledEngineProvider, ThemeProvider } from '@mui/material'
 import { THEME } from './shared/constants/constants'
 import './index.scss'
+import scrollTo from './features/scrollTo'
 
 const router = createRouter({
   routeTree,
