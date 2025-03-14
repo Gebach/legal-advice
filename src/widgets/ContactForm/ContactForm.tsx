@@ -1,4 +1,14 @@
-import { Box, Divider, FormControl, TextField, Typography, Stack, Checkbox, FormControlLabel } from '@mui/material'
+import {
+  Box,
+  Divider,
+  FormControl,
+  TextField,
+  Typography,
+  Stack,
+  Checkbox,
+  FormControlLabel,
+  FormHelperText,
+} from '@mui/material'
 import styles from './style.module.scss'
 import ButtonPrimary from '../../shared/ui/ButtonPrimary/ButtonPrimary'
 import PageSection from '../../shared/ui/PageSection/PageSection'
@@ -16,7 +26,7 @@ function ContactForm() {
   const [errors, setErrors] = useState({
     name: false,
     email: false,
-    privacyAccess: false,
+    privacyAgreement: false,
   })
   const [isFormInvalid, setIsFormInvalid] = useState(true)
   const [isEmailSentStatus, setIsEmailSentStatus] = useState<Record<string, boolean | string>>({
@@ -78,7 +88,7 @@ function ContactForm() {
         setErrors({
           name: false,
           email: false,
-          privacyAccess: false,
+          privacyAgreement: false,
         })
         setIsFormInvalid(true)
         setIsEmailSentStatus({
@@ -171,31 +181,34 @@ function ContactForm() {
                 onChange={e => setFormValues({ ...formValues, message: e.target.value })}
               />
 
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    sx={{
-                      color: 'secondary.main',
-                      '&.Mui-checked': {
-                        color: 'secondary.light',
-                      },
-                    }}
-                    value="privacyAgreement"
-                    id="privacyAgreement"
-                    name="privacyAgreement"
-                    defaultChecked
-                    onChange={e => onChangeHandler(e)}
-                  />
-                }
-                label={
-                  <Typography>
-                    Я согласен на{' '}
-                    <Link className="transition-all underline hover:opacity-80" to="/agreement">
-                      обработку персональных данных
-                    </Link>
-                  </Typography>
-                }
-              />
+              <FormControl error={!!errors.privacyAgreement}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      sx={{
+                        color: 'secondary.main',
+                        '&.Mui-checked': {
+                          color: 'secondary.light',
+                        },
+                      }}
+                      value="privacyAgreement"
+                      id="privacyAgreement"
+                      name="privacyAgreement"
+                      defaultChecked
+                      onChange={e => onChangeHandler(e)}
+                    />
+                  }
+                  label={
+                    <Typography>
+                      Я согласен на{' '}
+                      <Link className="transition-all underline hover:opacity-80" to="/agreement">
+                        обработку персональных данных
+                      </Link>
+                    </Typography>
+                  }
+                />
+                {errors.privacyAgreement && <FormHelperText>*Поле обязательно для заполнения</FormHelperText>}
+              </FormControl>
 
               <ButtonPrimary disabled={isFormInvalid} type="submit" content="Предоставить на рассмотрение" />
             </FormControl>

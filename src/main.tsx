@@ -4,7 +4,6 @@ import { routeTree } from './routeTree.gen'
 import { StyledEngineProvider, ThemeProvider } from '@mui/material'
 import { THEME } from './shared/constants/constants'
 import './index.scss'
-import ScrollToTop from './widgets/ScrollToTop/ScrollToTop'
 
 const router = createRouter({
   routeTree,

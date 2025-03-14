@@ -11,6 +11,9 @@ interface navLinksProps {
 }
 
 function MainHeader({ classname }: MainHeaderProps) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
   const [activeSection, setActiveSection] = useState<string>('')
   const [isScrolled, setIsScrolled] = useState<boolean>(false)
   const navLinks: navLinksProps[] = [

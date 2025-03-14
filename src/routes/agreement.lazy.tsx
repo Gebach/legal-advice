@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { createLazyFileRoute } from '@tanstack/react-router'
 import { Box, Typography } from '@mui/material'
 
@@ -7,6 +6,7 @@ export const Route = createLazyFileRoute('/agreement')({
 })
 
 function RouteComponent() {
+  window.scrollTo(0, 0)
   return (
     <Box className="page-agreement py-24 text-white">
       <Typography variant="h4">Политика в отношении обработки персональных данных</Typography>
