@@ -1,10 +1,9 @@
 import { MainHeaderProps } from '../../shared/model/types'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ButtonLink from '../../shared/ui/ButtonLink/ButtonLink'
 import BurgerMenu from '../../shared/ui/BurgerMenu/BurgerMenu'
 import logo from '../../shared/assets/logo.png'
 import { Link, useRouterState } from '@tanstack/react-router'
-import scrollTo from '../../features/scrollTo'
 
 interface navLinksProps {
   content: string
@@ -12,20 +11,45 @@ interface navLinksProps {
   isSectionScrolled: boolean
 }
 
+const scrollPositions = new Map<string, number>()
+
 function MainHeader({ classname }: MainHeaderProps) {
   const { location } = useRouterState()
-  console.log(location)
+
+  const previousPath = useRef(location.pathname)
 
   useEffect(() => {
-    if (location.hash) {
-      const targetId = `#${location.hash}`
+    // сохраняем позицию перед уходом со страницы
+    return () => {
+      scrollPositions.set(previousPath.current, window.scrollY)
+    }
+  }, [location.pathname])
 
+  useEffect(() => {
+    const path = location.pathname
+
+    if (path === '/') {
+      // если возвращаемся на главную, восстанавливаем scroll
+      const y = scrollPositions.get(path) ?? 0
+      console.log(y)
       setTimeout(() => {
-        scrollTo(targetId)
+        window.scrollTo({ top: y, behavior: 'smooth' })
       }, 1000)
+    } else if (location.hash) {
+      // если переход по якорю
+      const targetId = location.hash
+      setTimeout(() => {
+        const el = document.querySelector(targetId)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 500)
     } else {
+      // иначе скроллим в начало
       window.scrollTo({ top: 0, behavior: 'instant' })
     }
+
+    previousPath.current = path
   }, [location.pathname, location.hash])
 
   const [activeSection, setActiveSection] = useState<string>('')

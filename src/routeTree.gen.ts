@@ -16,10 +16,17 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const PolicyLazyImport = createFileRoute('/policy')()
 const AgreementLazyImport = createFileRoute('/agreement')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const PolicyLazyRoute = PolicyLazyImport.update({
+  id: '/policy',
+  path: '/policy',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/policy.lazy').then((d) => d.Route))
 
 const AgreementLazyRoute = AgreementLazyImport.update({
   id: '/agreement',
@@ -51,6 +58,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AgreementLazyImport
       parentRoute: typeof rootRoute
     }
+    '/policy': {
+      id: '/policy'
+      path: '/policy'
+      fullPath: '/policy'
+      preLoaderRoute: typeof PolicyLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -59,36 +73,41 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/agreement': typeof AgreementLazyRoute
+  '/policy': typeof PolicyLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/agreement': typeof AgreementLazyRoute
+  '/policy': typeof PolicyLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/agreement': typeof AgreementLazyRoute
+  '/policy': typeof PolicyLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agreement'
+  fullPaths: '/' | '/agreement' | '/policy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agreement'
-  id: '__root__' | '/' | '/agreement'
+  to: '/' | '/agreement' | '/policy'
+  id: '__root__' | '/' | '/agreement' | '/policy'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AgreementLazyRoute: typeof AgreementLazyRoute
+  PolicyLazyRoute: typeof PolicyLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AgreementLazyRoute: AgreementLazyRoute,
+  PolicyLazyRoute: PolicyLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -102,7 +121,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/agreement"
+        "/agreement",
+        "/policy"
       ]
     },
     "/": {
@@ -110,6 +130,9 @@ export const routeTree = rootRoute
     },
     "/agreement": {
       "filePath": "agreement.lazy.tsx"
+    },
+    "/policy": {
+      "filePath": "policy.lazy.tsx"
     }
   }
 }

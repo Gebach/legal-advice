@@ -200,7 +200,11 @@ function ContactForm() {
                   }
                   label={
                     <Typography>
-                      Я согласен на{' '}
+                      Отправляя свои данные, я соглашаюсь с{' '}
+                      <Link className="transition-all underline hover:opacity-80" to="/policy">
+                        политикой
+                      </Link>{' '}
+                      и даю согласие на{' '}
                       <Link className="transition-all underline hover:opacity-80" to="/agreement">
                         обработку персональных данных
                       </Link>
